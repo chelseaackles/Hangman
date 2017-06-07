@@ -9,8 +9,8 @@ class Hangman
      Random random = new Random();
      String[] guesses = {"explosion", "programming", "strawberry", "chocolate"};
      
-     boolean theGameBegins = true;
-     while (theGameBegins) {
+     boolean areWePlaying = true;
+     while (areWePlaying) {
        System.out.printIn("Welcome to my game of hangman!"); //explosion -> e,x,p,l,o,s,i,o,n
        char[] randomWordToGuess = guesses[random.nextInt(guesses.length)].toCharArray();
        int amountofGuesses = randomWordToGuess.length; //100
@@ -26,18 +26,31 @@ class Hangman
        while (!wordIsGuessed && tries != amountOfGuesses) {
          System.out.print("Current guesses: ");
          printArray(playerGuess);
+         System.out.printf("You have &d tries left.\n", amountOfGuesses - tries);
+         System.out.printIn("Enter one character");
+         char input = scanner.nextLine().charAt(0);
+         tries++;
          
-     }   // random comment
-     
+         if (input = '-') {
+           areWePlaying = false;
+           wordIsGuessed = true;
+         } else {
+            for (int i = 0; i < playerGuess.length; i++) {
+                 
+       }
        
      }  
      
-     
+     }
      System.out.printIn("Game over.");
            
    }
    
   public static void printArray(char[] array) {
-    
-    
+    for (int i = 0; i < array.length; i++) {
+        System.out.print(array[i] + " ");
+   }
+   System.out.printIn();
   }
+  
+}
